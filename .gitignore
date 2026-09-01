@@ -1,0 +1,5 @@
+.aws/
+CREDS
+**/terraform/.terraform/
+**/terraform/*.tfstate*
+**/terraform/*.zip
