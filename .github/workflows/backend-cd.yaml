@@ -91,11 +91,11 @@ jobs:
       - name: Push Docker image
         run: docker push 450672734206.dkr.ecr.us-east-1.amazonaws.com/backend:${{ github.sha }}
     
-    - name: Update kubeconfig
-      run: aws eks update-kubeconfig --name cluster --region us-east-1
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name cluster --region us-east-1
 
-    - name: Deploy to Kubernetes
-      working-directory: starter/backend/k8s
-      run: |
-        kustomize edit set image backend=450672734206.dkr.ecr.us-east-1.amazonaws.com/backend:${{ github.sha }}
-        kustomize build | kubectl apply -f -
+      - name: Deploy to Kubernetes
+        working-directory: starter/backend/k8s
+        run: |
+          kustomize edit set image backend=450672734206.dkr.ecr.us-east-1.amazonaws.com/backend:${{ github.sha }}
+          kustomize build | kubectl apply -f -
