@@ -68,7 +68,7 @@ jobs:
           aws-region: us-east-1
 
 
-      -name: Login to Amazon ERC
+      - name: Login to Amazon ERC
        uses: aws-actions/amazon-ecr-login@v2
       - name: Build Docker image
         working-directory: starter/frontend
